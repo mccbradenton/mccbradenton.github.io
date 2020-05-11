@@ -242,6 +242,32 @@ function clremptysongsinput(){
     
 }
 
+function tlist(stype){
+  let sr=document.getElementById("searchresults");
+
+  for(var i=sr.options.length-1;i >= 0;i--)
+     sr.remove(i);
+
+  if(stype==1){
+     for(var key in portsongtitle){
+       let t=portsongtitle[key];  
+       let o=option=document.createElement("option");
+       o.text="P"+key+"  "+t;
+       sr.add(o);
+     }
+  }else if(stype==2){
+     for(var key in engsongtitle){
+       let t=engsongtitle[key];
+       let o=option=document.createElement("option");
+       if(key.startsWith("A"))
+          o.text=key+"  "+t;
+       else
+          o.text="E"+key+"  "+t;
+       sr.add(o);
+     }
+  }
+}
+
 function search(stype){
   let sbval=document.getElementById("searchbox").value;
   let sr=document.getElementById("searchresults");
